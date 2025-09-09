@@ -10,15 +10,15 @@
         <module name="commonShareCode" />
         <module name="Eureka-Server" />
       </profile>
-      <profile name="Annotation profile for userService" enabled="true">
+      <profile name="Annotation profile for Activity-Service" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
+        <processorPath>
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
         </processorPath>
-        <module name="userService" />
         <module name="Activity-Service" />
+        <module name="userService" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

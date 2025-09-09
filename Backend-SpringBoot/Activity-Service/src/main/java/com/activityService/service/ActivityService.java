@@ -1,10 +1,12 @@
 package com.activityService.service;
 
 import com.activityService.enums.ActivityType;
+import com.activityService.fiegnClient.FeignClient;
 import com.activityService.model.Activity;
 import com.activityService.repo.ActivityRepository;
 import com.example.dtos.ActivityRequest;
 import com.example.dtos.ActivityResponse;
+import com.example.exceptions.UserNotFound;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +15,13 @@ import org.springframework.stereotype.Service;
 public class ActivityService {
 
     private final ActivityRepository repo;
+    private final FeignClient feignClient;
 
     public ActivityResponse trackActivity(ActivityRequest request) {
+
+        if(!feignClient.isUSerValid(request.getUserId())){
+            throw new UserNotFound("User Doesn't Exists..!");
+        }
 
         ActivityType type;
         try {

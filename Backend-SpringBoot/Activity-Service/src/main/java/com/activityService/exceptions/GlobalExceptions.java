@@ -1,6 +1,7 @@
 package com.activityService.exceptions;
 
 import com.example.exceptions.ErrorResponse;
+import com.example.exceptions.UserNotFound;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -36,5 +37,13 @@ public class GlobalExceptions {
                 ex.getMessage(),
                 request.getDescription(false).replace("uri=", ""));
         return new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(value = UserNotFound.class)
+    public ResponseEntity<ErrorResponse> handleUserNotFound(UserNotFound ex , WebRequest request){
+        ErrorResponse response = new ErrorResponse(HttpStatus.NOT_FOUND.value(),
+                ex.getMessage(),
+                request.getDescription(false).replace("uri=", ""));
+        return new ResponseEntity<>(response,HttpStatus.NOT_FOUND);
     }
 }

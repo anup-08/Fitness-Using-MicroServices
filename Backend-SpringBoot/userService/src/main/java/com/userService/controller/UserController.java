@@ -20,8 +20,18 @@ public class UserController {
         return ResponseEntity.ok(userService.registerUser(request));
     }
 
-    @GetMapping("/getUser/{email}")
+    @GetMapping("/getUserByEmail/{email}")
     public ResponseEntity<UserResponse> getUserDetails(@PathVariable String email){
         return ResponseEntity.ok(userService.getUserDetails(email));
+    }
+
+    @GetMapping("/getUserById/{userId}")
+    public ResponseEntity<UserResponse> getUserById(@PathVariable Long userId){
+        return ResponseEntity.ok(userService.getUserById(userId));
+    }
+
+    @GetMapping("/isValid/{userId}")
+    public ResponseEntity<Boolean> isUserValid(@PathVariable Long userId){
+        return ResponseEntity.ok(userService.isUserValid(userId));
     }
 }

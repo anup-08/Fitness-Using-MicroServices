@@ -54,10 +54,22 @@ public class UserService {
         return response(user);
     }
 
+    public UserResponse getUserById(Long userId) {
+        User user = repo.findById(userId).orElseThrow(()-> new UserNotFound("User Doesn't Exists..!"));
+        return response(user);
+    }
+
+    public Boolean isUserValid(Long userId) {
+        return repo.existsById(userId);
+    }
+
     private UserResponse response(User user){
         return new UserResponse(user.getId(), user.getFirstName()+" "+user.getLastName(), user.getEmail(),
                 user.getAge(),user.getGender().getDisplayName(),user.getRole().getDisplayName(),user.getCreatedAt(),
                 user.getUpdatedAt()
                 );
     }
+
+
+
 }
