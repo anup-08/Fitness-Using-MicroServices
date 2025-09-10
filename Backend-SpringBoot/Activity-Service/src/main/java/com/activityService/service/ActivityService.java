@@ -8,14 +8,22 @@ import com.example.dtos.ActivityRequest;
 import com.example.dtos.ActivityResponse;
 import com.example.exceptions.UserNotFound;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class ActivityService {
 
     private final ActivityRepository repo;
     private final FeignClient feignClient;
+    private final KafkaTemplate<Long , Activity> kafkaTemplate;
+
+    @Value("${kafka-topic-name}")
+    private String topicName;
 
     public ActivityResponse trackActivity(ActivityRequest request) {
 
@@ -37,7 +45,17 @@ public class ActivityService {
                 .startedAt(request.getStartedAt())
                 .build();
 
-        return response(repo.save(activity));
+        Activity newActivity = repo.save(activity);
+
+        try{
+            log.atInfo().log("Adding messages at kafka....");
+            kafkaTemplate.send(topicName , newActivity.getUserId() , newActivity);
+            log.atInfo().log("messages added at kafka....");
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Error while adding message in Message Broker");
+        }
+
+        return response(newActivity);
     }
 
     public Boolean isActivityValid(Long activityId) {
