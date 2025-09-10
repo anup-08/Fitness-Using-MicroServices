@@ -60,11 +60,14 @@
             <version>1.0</version>
         </dependency>
 
+<<<<<<< HEAD
         <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
         </dependency>
 
+=======
+>>>>>>> da9a9ea662887fd25df6b4793ac5d97003e60e83
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -76,8 +79,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+<<<<<<< HEAD
 
     </dependencies>
+=======
+	</dependencies>
+>>>>>>> da9a9ea662887fd25df6b4793ac5d97003e60e83
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
