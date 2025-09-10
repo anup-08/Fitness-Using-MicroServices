@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/commonShareCode/pom.xml" />
         <option value="$PROJECT_DIR$/Activity-Service/pom.xml" />
         <option value="$PROJECT_DIR$/Eureka-Server/pom.xml" />
+        <option value="$PROJECT_DIR$/Ai-Service/pom.xml" />
       </list>
     </option>
   </component>
