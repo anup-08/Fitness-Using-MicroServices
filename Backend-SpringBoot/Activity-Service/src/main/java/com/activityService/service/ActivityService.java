@@ -62,10 +62,6 @@ public class ActivityService {
         return repo.existsById(activityId);
     }
 
-    public Boolean isActivityValid(Long activityId) {
-        return repo.existsById(activityId);
-    }
-
     private ActivityResponse response(Activity activity){
         return new ActivityResponse(activity.getId(), activity.getUserId(), activity.getType().getDisplayName() ,
                 activity.getDuration(),activity.getCaloriesBurned(),activity.getStartedAt(),

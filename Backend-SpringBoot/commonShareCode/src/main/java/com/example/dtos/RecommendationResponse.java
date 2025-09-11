@@ -13,9 +13,10 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class RecommendationResponse {
-    private Long id;
+    private String id;
     private Long userId;
     private Long activityId;
+    private String activityType;
     private String recommendation;
     private List<String> improvement;
     private List<String> suggestion;
