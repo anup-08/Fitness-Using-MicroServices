@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Backend-SpringBoot.iml" filepath="$PROJECT_DIR$/.idea/Backend-SpringBoot.iml" />
-      <module fileurl="file://$PROJECT_DIR$/commonShareCode.iml" filepath="$PROJECT_DIR$/commonShareCode.iml" />
     </modules>
   </component>
 </project>

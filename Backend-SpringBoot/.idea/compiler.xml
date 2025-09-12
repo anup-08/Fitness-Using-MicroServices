@@ -9,8 +9,9 @@
         <outputRelativeToContentRoot value="true" />
         <module name="commonShareCode" />
         <module name="Eureka-Server" />
+        <module name="Config-Server" />
       </profile>
-      <profile name="Annotation profile for Ai-Service" enabled="true">
+      <profile name="Annotation profile for userService" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -30,6 +31,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Activity-Service" options="-parameters" />
       <module name="Ai-Service" options="-parameters" />
+      <module name="Config-Server" options="-parameters" />
       <module name="Eureka-Server" options="-parameters" />
       <module name="userService" options="-parameters" />
     </option>
